@@ -2501,6 +2501,7 @@
 				GCC_PREFIX_HEADER = FastFingerFree/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = FastFingerFree/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FastFingerFree/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2527,6 +2528,7 @@
 				GCC_PREFIX_HEADER = FastFingerFree/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = FastFingerFree/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FastFingerFree/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2564,6 +2566,7 @@
 				D80FB493178BB7CA00F1960F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
