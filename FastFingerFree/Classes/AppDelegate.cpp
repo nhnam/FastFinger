@@ -11,6 +11,7 @@
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
 #include "HelloWorldScene.h"
+#include "GameLayer.h"
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -38,9 +39,10 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // create a scene. it's an autorelease object
     CCScene *pScene = HelloWorld::scene();
-
+    CCScene *pGameLayerScene = GameLayerScene::scene();
     // run
-    pDirector->runWithScene(pScene);
+//    pDirector->runWithScene(pScene);
+    pDirector->runWithScene(pGameLayerScene);
 
     return true;
 }

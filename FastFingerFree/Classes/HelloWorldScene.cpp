@@ -28,6 +28,8 @@ bool HelloWorld::init()
     {
         return false;
     }
+    
+    
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
@@ -71,6 +73,10 @@ bool HelloWorld::init()
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
     
+    CCParticleSystemQuad* m_emitter = new CCParticleSystemQuad();
+    m_emitter = CCParticleFire::create();
+    m_emitter->setPosition( ccp(size.width/2, size.height/2) );
+    this->addChild(m_emitter);
     return true;
 }
 
@@ -82,3 +88,5 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
     exit(0);
 #endif
 }
+
+#pragma mark timer tick
