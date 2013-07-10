@@ -17,6 +17,7 @@ public:
     static cocos2d::CCScene* scene();
     void menuCloseCallback(CCObject* pSender);
     void tick(float dt);
+    void spriteTick(float dt);
     CREATE_FUNC(GameLayerScene);
     virtual void ccTouchesBegan(cocos2d::CCSet* touches, cocos2d::CCEvent* event);
     virtual void ccTouchesMoved(cocos2d::CCSet* touches, cocos2d::CCEvent* event);
@@ -24,7 +25,7 @@ public:
 private:
     cocos2d::CCArray* arrSprites;
     float curSpeed;
-    float curStep;
+    int curStep;
     float curScore;
     float curTimer;
 };

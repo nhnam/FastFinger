@@ -8,6 +8,10 @@
 
 #include "GameLayer.h"
 #include "SimpleAudioEngine.h"
+#include "Random.h"
+
+#define RANDOM(X) Random::next()%(int)X
+#define RANDOM_SEED(X) Random::setSeed(X)
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -29,11 +33,12 @@ bool GameLayerScene::init(){
     curTimer = 0;
     
     // schedule timertick:
-    schedule(schedule_selector(GameLayerScene::tick));
+//    schedule(schedule_selector(GameLayerScene::tick));
     // schedule add sprites to scene:
-    
+    schedule(schedule_selector(GameLayerScene::spriteTick), 1.0);
     return true;
 }
+
 CCScene* GameLayerScene::scene(){
     CCScene *scene = NULL;
     do{
@@ -45,9 +50,11 @@ CCScene* GameLayerScene::scene(){
     }while(0);
     return scene;
 }
+
 void GameLayerScene::menuCloseCallback(CCObject* pSender){
     CCLOG("");
 }
+
 void GameLayerScene::tick(float dt){
 //    CCLOG("Gamer tick");
     float dx = 0;
@@ -63,6 +70,17 @@ void GameLayerScene::tick(float dt){
     }
 }
 
+void GameLayerScene::spriteTick(float dt){
+    CCLOG("Sprites tick");
+    curStep ++;
+    const CCString* sprName =  CCString::createWithFormat("%d.png",curStep);
+    CCSprite *sprite = CCSprite::create("01.png");
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    sprite->setPosition(ccp(RANDOM(size.width), RANDOM(size.height)));
+    this->addChild(sprite,1);
+}
+
+#pragma mark handle touches event
 void GameLayerScene::ccTouchesBegan(cocos2d::CCSet* touches, cocos2d::CCEvent* event){}
 void GameLayerScene::ccTouchesMoved(cocos2d::CCSet* touches, cocos2d::CCEvent* event){}
 void GameLayerScene::ccTouchesEnded(cocos2d::CCSet* touches, cocos2d::CCEvent* event){
@@ -70,8 +88,4 @@ void GameLayerScene::ccTouchesEnded(cocos2d::CCSet* touches, cocos2d::CCEvent* e
     CCTouch *myTouch = (CCTouch *)touches->anyObject();
     CCPoint location = myTouch->getLocationInView();
     location = CCDirector::sharedDirector()->convertToGL(location);
-    CCParticleSystemQuad* m_emitter = new CCParticleSystemQuad();
-    m_emitter = CCParticleFire::create();
-    m_emitter->setPosition(location);
-    this->addChild(m_emitter);
 }

@@ -10,5 +10,17 @@
 #define __FastFingerFree__Random__
 
 #include <iostream>
-
+class Random
+{
+public:
+    Random(void);
+    Random( long seed);
+    static void setSeed(long _seed);
+    static int next();
+public:
+    static long seed;
+    static long multiplier;
+    static long addend;
+    static long mask;
+};
 #endif /* defined(__FastFingerFree__Random__) */
